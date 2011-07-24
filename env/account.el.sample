@@ -1,0 +1,9 @@
+;;==============================================================================
+;; personal account info is be written here.
+;;==============================================================================
+
+;; simplenote 
+; (setq simplenote-email "simplenote-account@example.com")
+; (setq simplenote-password "somplenote-account-password")
+; (setq simplenote-directory "/path/to/simplenote-directory")
+; (simplenote-setup)
