@@ -12,3 +12,12 @@
     (setq my-screen-width   1366)
     (setq my-screen-hight    768)
     ))
+;; MacBook Pro 13
+(when (string= my-screen-type "mbp13")
+  (progn
+    (setq my-screen-font-size 14)
+    (setq my-screen-columns   88)
+    (setq my-screen-rows      50)
+    (setq my-screen-width   1280)
+    (setq my-screen-hight    800)
+    ))
