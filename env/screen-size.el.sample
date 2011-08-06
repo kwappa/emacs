@@ -21,3 +21,12 @@
     (setq my-screen-width   1280)
     (setq my-screen-hight    800)
     ))
+;; iMac 21
+(when (string= my-screen-type "imac21")
+  (progn
+    (setq my-screen-font-size 14)
+    (setq my-screen-columns  134)
+    (setq my-screen-rows      68)
+    (setq my-screen-width   1920)
+    (setq my-screen-hight   1080)
+    ))
