@@ -6,16 +6,6 @@
 (setq hl-line-face 'hlline-face)
 (global-hl-line-mode)
 
-;; whitespace-mode
-(setq whitespace-style
-      '(tabs spaces space-mark))
-;(setq whitespace-space-regexp "\\( +\\|\u3000+\\)")
-(setq whitespace-space-regexp "\\(\u3000+\\|\s+$\\)")
-(setq whitespace-display-mappings
-      '((space-mark ?\u3000 [?\u25a1])))
-(require 'whitespace)
-(global-whitespace-mode 1)
-
 ;===============================================================================
 ;; diredの機能拡張
 ;===============================================================================
@@ -55,7 +45,6 @@
              (c-set-offset 'inexpr-class    0)
              (setq c-basic-offset 4 indent-tabs-mode nil)
              ))
-
 
 ;*******************************************************************************
 ;; my functions
