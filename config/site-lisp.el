@@ -52,6 +52,9 @@
 (add-to-list 'auto-mode-alist '("\\.php$" . php-mode))
 (add-to-list 'auto-mode-alist '("\\.inc$" . php-mode))
 
+;; js-mode : apply to .json
+(add-to-list 'auto-mode-alist '("\\.json$" . js-mode))
+
 ;; jaspace.el
 ;; http://openlab.dino.co.jp/2008/08/29/230500336.html
 ;; タブ, 全角スペース、改行直前の半角スペースを表示する
