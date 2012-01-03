@@ -59,6 +59,12 @@
 (add-to-list 'auto-mode-alist '("Rakefile" . ruby-mode))
 (add-to-list 'auto-mode-alist '("Gemfile " . ruby-mode))
 (add-to-list 'auto-mode-alist '("\\.ru$"   . ruby-mode))
+
+
+;; slim-mode
+(autoload 'slim-mode "slim-mode" "Major mode for editing slim template." t)
+(add-to-list 'auto-mode-alist '("\\.slim$" . slim-mode))
+
 ;; jaspace.el
 ;; http://openlab.dino.co.jp/2008/08/29/230500336.html
 ;; タブ, 全角スペース、改行直前の半角スペースを表示する
