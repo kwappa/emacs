@@ -54,12 +54,30 @@
 
 ;; js-mode : apply to .json
 (add-to-list 'auto-mode-alist '("\\.json$" . js-mode))
+;; http://e-arrows.sakura.ne.jp/2010/12/closure-library-on-js2-mode.html
+(add-hook 'js-mode-hook
+          #'(lambda ()
+              (require 'espresso)
+              (setq
+               espresso-indent-level 4
+               espresso-expr-indent-offset 4
+               indent-tabs-mode nil)
+              (defun my-js-indent-line ()
+                (interactive)
+                (let* ((parse-status (save-excursion (syntax-ppss (point-at-bol))))
+                       (offset (- (current-column) (current-indentation)))
+                       (indentation (espresso--proper-indentation parse-status)))
+                  (back-to-indentation)
+                  (if (looking-at "case\\s-")
+                      (indent-line-to (+ indentation 4))
+                      (espresso-indent-line))
+                  (when (> offset 0) (forward-char offset))))
+              (set (make-local-variable 'indent-line-function) 'my-js-indent-line)))
 
 ;; ruby-mode : apply to Rakefile, .ru
 (add-to-list 'auto-mode-alist '("Rakefile" . ruby-mode))
 (add-to-list 'auto-mode-alist '("Gemfile " . ruby-mode))
 (add-to-list 'auto-mode-alist '("\\.ru$"   . ruby-mode))
-
 
 ;; slim-mode
 (autoload 'slim-mode "slim-mode" "Major mode for editing slim template." t)
