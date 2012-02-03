@@ -54,25 +54,41 @@
 
 ;; js-mode : apply to .json
 (add-to-list 'auto-mode-alist '("\\.json$" . js-mode))
-;; http://e-arrows.sakura.ne.jp/2010/12/closure-library-on-js2-mode.html
+;; http://d.hatena.ne.jp/gengar/20110522/1306029785
+(defun my-js-indent-line ()
+  (interactive)
+  (let* ((parse-status (save-excursion (syntax-ppss (point-at-bol))))
+         (offset (- (current-column) (current-indentation)))
+         (indentation (espresso--proper-indentation parse-status)))
+    (back-to-indentation)
+
+    ;; switch の中は余分に一つインデント
+    (cond ((let ((pos (nth 1 parse-status)))
+             (and pos
+                  (not (looking-at "}"))
+                  (save-excursion
+                    (goto-char pos)
+                    (back-to-indentation)
+                    (looking-at "switch\\W"))))
+           (indent-line-to (+ indentation espresso-indent-level)))
+          ;; consecutive declarations in a var statement are nice if
+          ;; properly aligned, i.e:
+          ;;
+          ;; var foo = "bar",
+          ;;     bar = "foo";
+          ((let ((node (js2-node-at-point)))
+             (and node
+                  (= js2-NAME (js2-node-type node))
+                  (= js2-VAR (js2-node-type (js2-node-parent node)))))
+           (indent-line-to (+ 4 indentation)))
+          (t
+           (espresso-indent-line)))
+    (when (> offset 0) (forward-char offset))))
 (add-hook 'js-mode-hook
-          #'(lambda ()
-              (require 'espresso)
-              (setq
-               espresso-indent-level 4
-               espresso-expr-indent-offset 4
-               indent-tabs-mode nil)
-              (defun my-js-indent-line ()
-                (interactive)
-                (let* ((parse-status (save-excursion (syntax-ppss (point-at-bol))))
-                       (offset (- (current-column) (current-indentation)))
-                       (indentation (espresso--proper-indentation parse-status)))
-                  (back-to-indentation)
-                  (if (looking-at "case\\s-")
-                      (indent-line-to (+ indentation 4))
-                      (espresso-indent-line))
-                  (when (> offset 0) (forward-char offset))))
-              (set (make-local-variable 'indent-line-function) 'my-js-indent-line)))
+          '(lambda ()
+             (setq espresso-indent-level 2
+                   espresso-expr-indent-offset 2)
+             (set (make-local-variable 'indent-line-function) 'my-js-indent-line)))
 
 ;; ruby-mode : apply to Rakefile, .ru
 (add-to-list 'auto-mode-alist '("Rakefile" . ruby-mode))
