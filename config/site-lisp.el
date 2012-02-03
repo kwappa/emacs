@@ -79,6 +79,11 @@
 (add-to-list 'auto-mode-alist '("Gemfile " . ruby-mode))
 (add-to-list 'auto-mode-alist '("\\.ru$"   . ruby-mode))
 
+;; rhtml-mode : erb
+;;; rhtml mode
+(add-to-list 'load-path "~/.emacs.d/site-lisp/rhtml")
+(require 'rhtml-mode)
+
 ;; slim-mode
 (autoload 'slim-mode "slim-mode" "Major mode for editing slim template." t)
 (add-to-list 'auto-mode-alist '("\\.slim$" . slim-mode))
