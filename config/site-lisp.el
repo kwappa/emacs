@@ -53,7 +53,15 @@
 (add-to-list 'auto-mode-alist '("\\.inc$" . php-mode))
 
 ;; js-mode : apply to .json
-(add-to-list 'auto-mode-alist '("\\.json$" . js-mode))
+(require 'js2-mode)
+(eval-when-compile
+  (require 'espresso))
+
+(eval-after-load 'js2-mode
+  '(progn
+     (require 'espresso)))
+(add-to-list 'auto-mode-alist '("\\.json$" . js2-mode))
+(add-to-list 'auto-mode-alist '("\\.js$" . js2-mode))
 ;; http://d.hatena.ne.jp/gengar/20110522/1306029785
 (defun my-js-indent-line ()
   (interactive)
@@ -84,10 +92,10 @@
           (t
            (espresso-indent-line)))
     (when (> offset 0) (forward-char offset))))
-(add-hook 'js-mode-hook
+(add-hook 'js2-mode-hook
           '(lambda ()
-             (setq espresso-indent-level 2
-                   espresso-expr-indent-offset 2)
+             (setq espresso-indent-level 4
+                   espresso-expr-indent-offset 4)
              (set (make-local-variable 'indent-line-function) 'my-js-indent-line)))
 
 ;; ruby-mode : apply to Rakefile, .ru

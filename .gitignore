@@ -4,3 +4,4 @@ ac-comphist.dat
 env/screen-size.el
 env/account.el
 tramp
+*.elc
