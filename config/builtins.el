@@ -138,3 +138,18 @@
 (global-set-key [f12]     '(lambda() (interactive) (my-adjust-frame (/ my-screen-width 2)  0 (/ my-screen-columns 2) my-screen-rows)))
 ;; 全画面
 (global-set-key [C-f12]   '(lambda() (interactive) (my-adjust-frame    0  0 my-screen-columns my-screen-rows)))
+
+;===============================================================================
+;; diff-modeのカラーリング
+;===============================================================================
+(add-hook 'diff-mode-hook
+          (lambda ()
+            (set-face-foreground 'diff-file-header-face "light goldenrod")
+            (set-face-foreground 'diff-index-face "thistle")
+            (set-face-foreground 'diff-hunk-header-face "plum")
+            (set-face-foreground 'diff-removed-face "pink")
+            (set-face-background 'diff-removed-face "gray26")
+            (set-face-foreground 'diff-added-face "light green")
+            (set-face-background 'diff-added-face "gray26")
+            (set-face-foreground 'diff-changed-face "DeepSkyBlue1")
+            ))

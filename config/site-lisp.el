@@ -107,6 +107,7 @@
 ;;; rhtml mode
 (add-to-list 'load-path "~/.emacs.d/site-lisp/rhtml")
 (require 'rhtml-mode)
+(add-to-list 'auto-mode-alist '("\\.erb$"   . rhtml-mode))
 
 ;; slim-mode
 (autoload 'slim-mode "slim-mode" "Major mode for editing slim template." t)
