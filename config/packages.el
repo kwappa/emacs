@@ -144,4 +144,3 @@
               (simplenote-sync-notes)
               (simplenote-browser-refresh))
             ))
-
