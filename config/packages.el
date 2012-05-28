@@ -128,6 +128,9 @@
 (package-install 'github "nex3/haml-mode" 'haml-mode)
 (add-to-list 'auto-mode-alist '("\\.haml$" . haml-mode))
 
+;; yaml-mode
+(package-install 'github "yoshiki/yaml-mode" 'yaml-mode)
+
 ;; browse-kill-ring
 (package-install 'emacswiki "browse-kill-ring.el" 'browse-kill-ring)
 (global-set-key (kbd "C-M-y") 'browse-kill-ring)
