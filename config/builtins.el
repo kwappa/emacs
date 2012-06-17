@@ -6,6 +6,14 @@
 (setq hl-line-face 'hlline-face)
 (global-hl-line-mode)
 
+;; テーマの設定
+(setq custom-theme-load-path (append
+                              '("~/.emacs.d/themes")
+                              custom-theme-load-path))
+(custom-set-variables
+ '(custom-enabled-themes (quote (dark-laptop)))
+ '(custom-safe-themes (quote ("bbe1f32c6f4ef333d7ec0a576454a7616dcb8dd0f3ab0bbaa36f0686d3136ee9" "4ebac2fa32a01cdb38eeca0c9e322feda63243cc988fd11917411a47ef901d08" default))))
+
 ;===============================================================================
 ;; diredの機能拡張
 ;===============================================================================

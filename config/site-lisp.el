@@ -2,9 +2,9 @@
 ;; site-lisp
 ;===============================================================================
 ;; カラーテーマ
-(require 'color-theme)
-(eval-after-load "color-theme"
-  (color-theme-dark-laptop))
+;(require 'color-theme)
+;(eval-after-load "color-theme"
+;  (color-theme-dark-laptop))
 
 ;; physica-line
 ;; http://www.scythe.jp/lab/physical-line.html
