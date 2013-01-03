@@ -105,12 +105,13 @@
 ;===============================================================================
 ;; 標準Elispの設定
 (load "config/builtins")
+;; auto-installの設定
+(load "config/auto-install")
+
 ;; 非標準Elispの設定
 (load "config/packages")
 ;; パッケージマネージャで管理しないelisp
 (load "config/site-lisp.el")
-;; 個人情報
-(load "env/account")
 
 ;===============================================================================
 ;;  環境判別
@@ -126,7 +127,7 @@
       windows-p (or cygwin-p nt-p meadow-p))
 
 ;; 画面サイズ
-(load "env/screen-size.el")
+(setq my-screen-font-size 14)
 
 ;; Mac - cocoa
 (when ns-p

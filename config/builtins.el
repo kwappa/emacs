@@ -40,6 +40,9 @@
 (setq dired-recursive-copies  'always)
 (setq dired-recursive-deletes 'always)
 
+;; deleteで親ディレクトリに
+(define-key dired-mode-map "\d" 'dired-up-directory)
+
 ;;==============================================================================
 ;; プログラミング言語設定
 ;;==============================================================================

@@ -103,24 +103,11 @@
   ;; Your init file should contain only one such instance.
   ;; If there is more than one, they won't work right.
  '(anything-command-map-prefix-key "\C-c\C-f"))
-
-(package-install 'repo.or.cz '((files . ("anything-config"))
-                               (additional-paths . ("extensions")))
-                 'anything-startup)
+(require 'anything-startup)
 (global-set-key [?\C-\:] 'anything)
 
-;; auto-complete
-(package-install 'github "m2ym/auto-complete" 'auto-complete-config)
-(add-to-list 'ac-dictionary-directories
-             (format "%s/auto-complete/dict" package-base-dir))
-(ac-config-default)
-(add-hook 'auto-complete-mode-hook
-          (lambda ()
-            (define-key ac-completing-map (kbd "C-n") 'ac-next)
-            (define-key ac-completing-map (kbd "C-p") 'ac-previous)))
-
 ;; redo
-(package-install 'emacswiki "redo+.el" 'redo+)
+(require 'redo+)
 (global-set-key (kbd "C-M-/") 'redo)
 (setq undo-no-redo t)
 
@@ -132,15 +119,5 @@
 (package-install 'github "yoshiki/yaml-mode" 'yaml-mode)
 
 ;; browse-kill-ring
-(package-install 'emacswiki "browse-kill-ring.el" 'browse-kill-ring)
+(require 'browse-kill-ring)
 (global-set-key (kbd "C-M-y") 'browse-kill-ring)
-
-;; simplenote
-(package-install 'github "cefstat/simplenote.el" 'simplenote)
-; https://gist.github.com/458545
-(add-hook 'before-save-hook
-          (lambda()
-            (when (equal (buffer-name) "*Simplenote*")
-              (simplenote-sync-notes)
-              (simplenote-browser-refresh))
-            ))

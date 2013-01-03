@@ -1,11 +1,6 @@
 ;===============================================================================
 ;; site-lisp
 ;===============================================================================
-;; カラーテーマ
-;(require 'color-theme)
-;(eval-after-load "color-theme"
-;  (color-theme-dark-laptop))
-
 ;; physica-line
 ;; http://www.scythe.jp/lab/physical-line.html
 (require 'physical-line)
@@ -15,15 +10,9 @@
 
 ;; markdown-mode
 ;; http://jblevins.org/projects/markdown-mode/
-;; (package-install 'url "http://jblevins.org/projects/markdown-mode/markdown-mode.el" 'markdown-mode)
-;; (package-install-from-url "http://jblevins.org/projects/markdown-mode/markdown-mode.el")
 (require 'markdown-mode)
 (add-to-list 'auto-mode-alist '("\\.markdown$" . markdown-mode))
-
-;; actionscript-mode
-;; (package-install 'emacswiki "actionscript-mode-haas-7.0.el" 'actionscript-mode)
-(require 'actionscript-mode)
-(add-to-list 'auto-mode-alist '("\\.as$" . actionscript-mode))
+(setq markdown-command "perl /usr/local/bin/markdown")
 
 ;; rst-mode
 ;; Emacs起動時にrst.elを読み込み
