@@ -104,7 +104,8 @@
   ;; If there is more than one, they won't work right.
  '(anything-command-map-prefix-key "\C-c\C-f"))
 (require 'anything-startup)
-(global-set-key [?\C-\:] 'anything)
+(global-set-key [?\C-\:] 'anything)     ; for JIS keyboard
+(global-set-key [?\C-\'] 'anything)     ; for US  keyboard
 
 ;; redo
 (require 'redo+)
