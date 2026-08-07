@@ -1,8 +1,12 @@
-auto-install/
-auto-save-list/
-packages/
-ac-comphist.dat
-env/screen-size.el
-env/account.el
-tramp
-*.elc
+# package.el が生成するもの
+/elpa/
+/eln-cache/
+
+# 実行時に生成される状態ファイル
+/auto-save-list/
+/transient/
+/history
+/recentf
+/places
+/tramp
+/custom.el
