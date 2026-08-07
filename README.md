@@ -33,7 +33,6 @@ lisp/
 | キー | 動作 |
 |------|------|
 | `C-h` | Backspace (ヘルプは `F1`。dired では親ディレクトリへ) |
-| `M-n` / `M-p` | ウインドウ間移動 |
 | `C-\` | 空白削除 (delete-horizontal-space) |
 | `M-y` | kill-ring から選んで貼り付け (consult) |
 | `M-s l` / `M-s r` | バッファ内検索 / ripgrep |

@@ -4,6 +4,7 @@
 ;; パッケージに紐づかないグローバルキーバインド。
 ;; パッケージ固有のバインドは各モジュールの use-package :bind に書く。
 ;; ターミナル専用のため C-, や C-; のような端末が送れないキーは使わない。
+;; M- 系は Ghostty のショートカットと競合するため独自バインドを置かない。
 
 ;;; Code:
 
@@ -11,16 +12,8 @@
 ;; キー変換にすることで minibuffer / isearch / dired でも DEL として効く
 (key-translate "C-h" "DEL")
 
-;; ウインドウ間移動
-(keymap-global-set "M-n" #'next-multiframe-window)
-(keymap-global-set "M-p" #'previous-multiframe-window)
-
 ;; toggle-input-method を潰して空白削除に
 (keymap-global-set "C-\\" #'delete-horizontal-space)
-
-;; 単語移動は次の単語の先頭へ
-(autoload 'forward-to-word "misc")
-(keymap-global-set "M-f" #'forward-to-word)
 
 ;; メール作成と suspend を無効化
 (keymap-global-unset "C-x m")
