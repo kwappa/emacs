@@ -32,12 +32,14 @@ lisp/
 
 | キー | 動作 |
 |------|------|
-| `C-h` | Backspace (ヘルプは `F1`) |
-| `M-o` | ウインドウ間移動 |
-| `M-n` / `M-p` | 1行スクロール |
+| `C-h` | Backspace (ヘルプは `F1`。dired では親ディレクトリへ) |
+| `M-n` / `M-p` | ウインドウ間移動 |
+| `C-\` | 空白削除 (delete-horizontal-space) |
 | `M-y` | kill-ring から選んで貼り付け (consult) |
 | `M-s l` / `M-s r` | バッファ内検索 / ripgrep |
 | `C-x C-r` | 最近使ったファイル |
 | `C-c n` | 行番号表示のトグル |
 | `F8` | 折り返しのトグル |
 | `F3` / `F4` / `F5` | キーボードマクロ 記録 / 終了・再生 / 再生 |
+
+コマンド: `M-x my/insert-current-time` で現在日時を ISO 8601 形式で挿入。

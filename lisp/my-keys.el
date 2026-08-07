@@ -8,14 +8,15 @@
 ;;; Code:
 
 ;; C-h は Backspace (ヘルプは F1 または M-x help-for-help)
-(keymap-global-set "C-h" #'delete-backward-char)
+;; キー変換にすることで minibuffer / isearch / dired でも DEL として効く
+(key-translate "C-h" "DEL")
 
 ;; ウインドウ間移動
-(keymap-global-set "M-o" #'other-window)
+(keymap-global-set "M-n" #'next-multiframe-window)
+(keymap-global-set "M-p" #'previous-multiframe-window)
 
-;; 1行スクロール up / down
-(keymap-global-set "M-n" #'scroll-up-line)
-(keymap-global-set "M-p" #'scroll-down-line)
+;; toggle-input-method を潰して空白削除に
+(keymap-global-set "C-\\" #'delete-horizontal-space)
 
 ;; 単語移動は次の単語の先頭へ
 (autoload 'forward-to-word "misc")

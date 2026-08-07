@@ -7,7 +7,8 @@
 
 (eval-when-compile
   (require 'dired)
-  (require 'ls-lisp))
+  (require 'ls-lisp)
+  (require 'comint))
 (declare-function dired-mark "dired")
 (declare-function dired-up-directory "dired")
 
@@ -26,6 +27,9 @@
 (setq scroll-conservatively 101
       scroll-margin 0
       scroll-error-top-bottom t)
+
+;; シェルバッファは出力時に最下部までスクロール
+(setq comint-scroll-show-maximum-output t)
 
 ;; バックアップ・自動保存・ロックファイルを作らない
 (setq make-backup-files nil
@@ -69,6 +73,15 @@
          (if (save-excursion (beginning-of-line) (looking-at-p " "))
              dired-marker-char ?\s)))
     (dired-mark arg)))
+
+;; コミットメッセージは diff-mode で色をつける / .gitconfig は conf-mode
+(add-to-list 'auto-mode-alist '("COMMIT_EDITMSG\\'" . diff-mode))
+(add-to-list 'auto-mode-alist '("\\.gitconfig\\'" . conf-mode))
+
+(defun my/insert-current-time ()
+  "現在日時を ISO 8601 形式で挿入する。"
+  (interactive)
+  (insert (format-time-string "%FT%T%:z")))
 
 (provide 'my-defaults)
 ;;; my-defaults.el ends here
