@@ -19,6 +19,10 @@
 (keymap-global-unset "C-x m")
 (keymap-global-unset "C-z")
 
+;; 誤爆で終了しないよう C-x C-c を無効化
+;; 終了は M-x save-buffers-kill-terminal で
+(keymap-global-unset "C-x C-c")
+
 ;; キーボードマクロ: F3 で記録開始 / F4 で終了・再生 (Emacs 標準のまま)
 ;; F5 でも再生できるようにしておく
 (keymap-global-set "<f5>" #'kmacro-end-and-call-macro)
